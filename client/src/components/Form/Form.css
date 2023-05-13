@@ -1,0 +1,30 @@
+.register-form {
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+    box-shadow: 1px 1px 5px 0.1px #111;
+    padding: 5% 6%;
+    margin-bottom: 10%;
+    border-radius: 10px;
+
+}
+
+.register-form h1 {
+    font-family: 'Montserrat';
+    margin-bottom: 20px;
+}
+
+.my-btn {
+    padding: 2% 10%;
+    position: relative;
+    margin-top: 10%;
+    background-color: #111;
+    color: #00ffff;
+    border: none;
+    outline: none;
+}
+
+.my-btn:hover {
+    background-color: #00ffff;
+    color: #111;
+}

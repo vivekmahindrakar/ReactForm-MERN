@@ -1,0 +1,180 @@
+.Table_of_users {
+    background-color: #111;
+
+}
+
+.headings {
+    color: #fff;
+    position: relative;
+
+}
+
+.main-table {
+    position: absolute;
+    margin: 5% auto;
+    padding-top: 10%;
+    width: 80%;
+    left: 10%;
+
+}
+
+.main-table th {
+    background-color: rgb(31, 219, 157);
+    padding: 1% 0%;
+
+}
+
+.main-table tr {
+    text-align: center;
+    color: antiquewhite;
+}
+
+.last-td {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.last-td div {
+    text-align: end;
+    width: 30%;
+}
+
+.thanks {
+    background: #fff;
+    width: 100vw;
+    height: 100vh;
+}
+
+caption {
+    display: table-caption;
+    text-align: center;
+}
+
+.main-table tr:nth-child(odd) {
+    background-color: rgb(171, 231, 211);
+    color: black;
+
+}
+
+.main-table tr:nth-child(even) {
+
+    color: black;
+
+}
+
+#errorcodep {
+    margin: 10px;
+    margin-left: 5%;
+}
+
+.thanks-img {
+    height: 40vh;
+    width: auto;
+}
+
+.textdiv {
+    padding-left: 5%;
+    padding-right: 7.5%;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+#usefulp {
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+    font-size: 1.1rem;
+}
+
+.linkDiv {
+    padding: 10px 0;
+    display: flex;
+    justify-content: right;
+}
+
+.home-btn {
+    position: relative;
+    padding: 5px 25px;
+    margin: 0px auto;
+    background-color: aqua;
+    color: black;
+    font-size: 1rem;
+    text-decoration: none;
+    left: 0%;
+}
+
+.updateForm {
+    position: absolute;
+    width: 30%;
+    left: -33%;
+    top: 10%;
+    padding: 3em;
+    background-color: #fff;
+    transition: 0.2s all ease-in;
+}
+
+.updateForm input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 7%;
+    height: 50px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.updateForm p {
+    width: 25%;
+    text-align: start;
+}
+
+.updateForm input:last-child {
+    width: auto;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.update-btn {
+    width: 40%;
+    padding: 3%;
+    background-color: #1FDB9D;
+    border: none;
+}
+
+.close-btn {
+    position: relative;
+    right: -47%;
+    margin-top: -16px;
+    height: 28px;
+    width: auto;
+}
+
+/* @media screen and (min-width:800px)
+{
+    #errorcodep{
+        display: none;
+    }
+    img{
+        height: 90vh;
+        width: 40vw;
+    }
+    body{
+        display: flex;
+    }
+    .textdiv{
+        display: grid;
+        align-content: center;
+    }
+    h1{
+        font-size: 7rem;
+        
+    }
+    h3{
+        font-size: 2.6rem;
+    }
+} */
