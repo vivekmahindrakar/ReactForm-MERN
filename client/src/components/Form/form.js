@@ -7,28 +7,31 @@ import "./Form.css"
 
 const Form = () => {
 
-    const history = useNavigate();
-    const [user, setUser] = useState({ fname: "", lname: "", email: "", event: "" });
+    //const history = useNavigate();
+    //to update the components without reloding the actual page is called hooks
+
+    const [user, setUser] = useState({ sqc: "", lsqc: "", label: "", count: "" });
     const [amount, setAmount] = useState();
 
     const RegisterMe = async (e) => {
+
         e.preventDefault();
-        if (user.event === 'App development')
-            setAmount(90);
-        else if (user.event === 'Webber')
-            setAmount(50);
-        if (user.event === 'Code-a-thon')
-            setAmount(100);
+        // if (user.event === 'App development')
+        //     setAmount(90);
+        // else if (user.event === 'Webber')
+        //     setAmount(50);
+        // if (user.event === 'Code-a-thon')
+        //     setAmount(100);
 
 
         try {
 
             var data = await Axios.post('/registerUser', {
-                fname: user.fname, lname: user.lname, email: user.email, event: user.event, amount: amount
-            }).then(res => {
+                sqc: user.sqc, lsqc: user.lsqc, label: user.label, count: user.count
+            }).then(function (res) {
                 console.log(res.data);
-                history('/thankyou')
-            }).catch(e => {
+                //history('/thankyou')
+            }).catch(function (e) {
                 console.log(e);
             })
 
@@ -51,30 +54,26 @@ const Form = () => {
 
     return (
         <form className='register-form' method='POST' id='form'>
-            <h1>Get set for the event now!</h1>
+            <h1>Scan QR codes with ease..!</h1>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputFirstName">First Name</label>
-                    <input type="text" class="form-control" id="inputFirstName" placeholder="Johnny" name="fname" value={user.fname} onChange={Changed} />
+                    <label for="inputFirstName">Scan QR code</label>
+                    <input type="text" class="form-control" id="inputFirstName" placeholder="abc" name="sqc" value={user.fname} onChange={Changed} />
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="inputLastName">LastName</label>
-                    <input type="text" class="form-control" id="inputLastName" placeholder="Depp" name="lname" value={user.lname} onChange={Changed} />
+                    <label for="inputLastName">Last Scan QR code</label>
+                    <input type="text" class="form-control" id="inputLastName" placeholder="mnq" name="lsqc" value={user.lname} onChange={Changed} />
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="example@gmail.com" name="email" value={user.email} onChange={Changed} />
+                <label for="inputEmail">Label</label>
+                <input type="text" class="form-control" id="inputEmail" placeholder="some label" name="label" value={user.email} onChange={Changed} />
             </div>
             <div class="form-row">
 
-                <div class="form-group col-md-4">
-                    <label for="inputState">Event</label>
-                    <select id="inputState" class="form-control" name="event" value={user.event} onChange={Changed}>
-                        <option selected>Webber</option>
-                        <option>App development</option>
-                        <option>Code-a-thon</option>
-                    </select>
+                <div class="form-group">
+                    <label for="inputCount">Count</label>
+                    <input type="text" class="form-control" id="inputCount" placeholder="example@gmail.com" name="count" value={user.email} onChange={Changed} />
                 </div>
             </div>
             <input type="number" value={Rand} hidden />

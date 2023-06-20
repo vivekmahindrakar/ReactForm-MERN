@@ -4,60 +4,58 @@ const app = express();
 
 const bodyParser = require("body-parser");
 const path = require('path');
+const { count } = require("console");
 
+
+//middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json()) //this line suckssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+app.use(bodyParser.json())
 
 mongoose.connect(`mongodb+srv://ValueWealth:Vivek_2021@cluster0.hxv9z.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
 
+//Create Schema ---> Create Model ----> Work on that model(CRUD operations)
+
 const schema = mongoose.Schema({
-    FirstName: String,
-    LastName: String,
-    Type_of_event: String,
-    Email: String,
+    ScanQrCode: String,
+    LatestScanQrCode: String,
+    Label: String,
+    Count: String,
 });
 
-const Users = mongoose.model('candidate', schema);
+const Users = mongoose.model('qrcode', schema);
 
+//creating apis---------------------------------------
 
+// CRUD - create,Read,Update,Delete
+
+//read data from the mongodb database
 app.get('/users', function (req, res) {
+
     Users.find().then(function (foundItems) {
         res.send(foundItems)
         return foundItems;
     }).catch(function (err) { console.log(err); })
-    // Users.find({}, function (err, foundItems) {
-    //     if (err) {
 
-    //     } else {
-    //         res.send(foundItems)
-    //         return foundItems;
-    //     }
-    // })
 
 })
 
+//create cha function aahe ha
 app.post('/registerUser', async (req, res) => {
 
 
     const member = new Users(
         {
-            FirstName: req.body.fname,
-            LastName: req.body.lname,
-            Type_of_event: req.body.event,
-            Email: req.body.email,
+            ScanQrCode: req.body.sqc,
+            LatestScanQrCode: req.body.lsqc,
+            Label: req.body.label,
+            Count: req.body.count,
         }
     )
     member.save();
-    // member.save(function (err, result) {
-    //     if (err)
-    //         console.log(err);
-    //     else {
-    //         return result;
-    //     }
 
-    // })
 })
-app.post('/deleteUser', (req, res) => {
+//to delete the specific user from database
+app.post('/deleteUser', function (req, res) {
     const id = req.body.key;
     console.log(id);
     Users.findOneAndDelete({ _id: id }).then(function (docs) { console.log(docs); }).catch(function (err) { console.log(err); });
@@ -65,20 +63,21 @@ app.post('/deleteUser', (req, res) => {
 
 
 })
-app.post('/updateUser', (req, res) => {
+// to update specific user from the database
+app.post('/updateUser', function (req, res) {
     id = req.body.key;
-    fname = req.body.fname;
-    email = req.body.email;
-    lname = req.body.lname;
+    sqc = req.body.sqc;
+    lsqc = req.body.lsqc;
+    label = req.body.label;
+    coount = req.body.count
 
-    // console.log(id+fname+email+lname);
-    Users.findByIdAndUpdate({ _id: id }, { FirstName: fname, LastName: lname, Email: email }, { upsert: true }).then(function (doc) { res.send(doc); }).catch(function (err) { res.status(500).send(err); });
+    Users.findByIdAndUpdate({ _id: id }, { ScanQrCode: sqc, LatestScanQrCode: lsqc, Label: label, Count: coount }, { upsert: true }).then(function (doc) { res.send(doc); }).catch(function (err) { res.status(500).send(err); });
 
 
     //res.send(doc)
 })
-
-app.post('/getSpecificUser', (req, res) => {
+//ignore
+app.post('/getSpecificUser', function (req, res) {
     // Participants.find({_id:req.body.id},(err,doc)=>
     // {
     //     if(err)
@@ -92,8 +91,8 @@ app.post('/getSpecificUser', (req, res) => {
 const port = process.env.PORT || 4000;
 
 
-app.listen(5000, () => {
-    console.log("listening on port 5000");
+app.listen(port, function () {
+    console.log("listening on port" + port);
 })
 
 //aninymous function
@@ -102,7 +101,7 @@ app.listen(5000, () => {
 //simple /names function
 //function nname(paramter)
 
-//
+// fat arrow function
 
 
 
